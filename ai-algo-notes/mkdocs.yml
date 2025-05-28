@@ -25,9 +25,9 @@ nav:
       - 从零开始创建 LLM: ai/LLMs-from-scratch.md
   - 计算机:
       - 计算机科学导论: computer/cs-intro.md
-      - 计算机组成原理: computer/os.md
+      - 计算机组成原理: computer/computer-organization.md
   - 编程语言:
-      - Python: python/python.md
+      - Python: programming/python.md
   - 数学:
       - 线性代数: math/linear-algebra.md
  
