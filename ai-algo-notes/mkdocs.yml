@@ -1,15 +1,28 @@
 site_name: Tyne 个人学习博客
+site_description: 记录个人学习AI、算法、计算机的过程
+site_author: Tyne
+
 theme:
   name: material
   language: zh
   palette:
-    scheme: default
-    primary: indigo
-    accent: deep orange
+    scheme: default             # 默认明亮模式（可改为 slate）
+    primary: indigo             # 主色调
+    accent: deep orange         # 强调色
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.instant      # 页面即时切换，不重新加载
+    - search.suggest          # 搜索建议功能
+    - content.code.copy       # 代码块右上角提供复制按钮
+
+
 nav:
   - 首页: index.md
+  - 关于我: about-me.md
   - 人工智能:
-      - 从零开始创建llm: ai/LLMs-from-scratch.md
+      - 从零开始创建 LLM: ai/LLMs-from-scratch.md
   - 计算机:
       - 计算机科学导论: computer/cs-intro.md
       - 计算机组成原理: computer/os.md
@@ -17,12 +30,23 @@ nav:
       - Python: python/python.md
   - 数学:
       - 线性代数: math/linear-algebra.md
+ 
+plugins:
+  - search:
+      separator: '[\s\-\.]+'           # 更好支持中文搜索
+  - git-revision-date-localized:
+      type: timeago                    # 显示“几天前”等形式
+      locale: zh                       # 使用中文时间格式
 
 markdown_extensions:
-  - admonition
-  - codehilite
-  - footnotes
-  - toc:
+
+  - toc:                               # 自动目录
       permalink: true
-  - pymdownx.superfences
-  - pymdownx.details
+  - tables                             # 支持 Markdown 表格
+  - admonition                         # 支持!!! 提示框（note/warning/info 等）
+  - codehilite                         # 代码高亮
+  - footnotes                          # 脚注
+  - pymdownx.superfences               # 多语言代码块、标签页样式代码块
+  - pymdownx.details                   # 可折叠内容（<details> 标签）
+  - pymdownx.tabbed                    # 支持代码/内容标签页切换
+  - pymdownx.highlight                 # 更强大的代码高亮支持
