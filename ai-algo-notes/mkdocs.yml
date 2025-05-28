@@ -1,0 +1,28 @@
+site_name: Tyne 个人学习博客
+theme:
+  name: material
+  language: zh
+  palette:
+    scheme: default
+    primary: indigo
+    accent: deep orange
+nav:
+  - 首页: index.md
+  - 人工智能:
+      - 从零开始创建llm: ai/LLMs-from-scratch.md
+  - 计算机:
+      - 计算机科学导论: computer/cs-intro.md
+      - 计算机组成原理: computer/os.md
+  - 编程语言:
+      - Python: python/python.md
+  - 数学:
+      - 线性代数: math/linear-algebra.md
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.details
