@@ -1,0 +1,28 @@
+echo "name: Deploy MkDocs to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # 如果你的默认分支是 master，请改成 master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install mkdocs mkdocs-material mkdocs-search-zh
+
+      - name: Deploy to GitHub Pages
+        run: |
+          mkdocs gh-deploy --force
+" > .github/workflows/deploy.yml
