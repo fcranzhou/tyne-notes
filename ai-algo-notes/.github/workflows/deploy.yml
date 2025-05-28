@@ -1,9 +1,10 @@
-echo "name: Deploy MkDocs to GitHub Pages
+name: Deploy MkDocs to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # 如果你的默认分支是 master，请改成 master
+      - main      # 当推送到 main 分支时，自动部署
+      - preview   # 当推送到 preview 分支时，自动构建并部署预览版本
 
 jobs:
   deploy:
@@ -22,7 +23,19 @@ jobs:
         run: |
           pip install mkdocs mkdocs-material mkdocs-search-zh
 
-      - name: Deploy to GitHub Pages
+      - name: Build and deploy to GitHub Pages
         run: |
-          mkdocs gh-deploy --force
-" > .github/workflows/deploy.yml
+          mkdocs gh-deploy --force --branch gh-pages
+
+      - name: Create CNAME file for custom domain
+        run: |
+          echo 'www.tyneblog.com' > ./site/CNAME
+          
+      - name: Push CNAME to gh-pages
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add site/CNAME
+          git commit -m "Add CNAME for custom domain"
+          git push origin gh-pages
+
